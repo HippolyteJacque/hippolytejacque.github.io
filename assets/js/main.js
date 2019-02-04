@@ -152,15 +152,17 @@
 					// Use main <img>'s src as this spotlight's background.
 					window.setInterval(function(){
 						i++;
-						spotlightSlide();
-						if (i >= 3)
-							i = 1;
+						// $this.fadeTo( 1000 , 0.5, function() {
+							spotlightSlide();
+							if (i == 3)
+								i = 0;
+								// $this.fadeTo(500, 1);
+						// });
 					}, 5000);
 
 					function spotlightSlide(){
 						$this.css('background-image', 'url("' + $this.find('.image.main > img.slide'+i.toString()).attr('src') + '")');
 					}
-					// $this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
 
 					// Side-specific scrollex tweaks.
 						if ($this.hasClass('top')) {
