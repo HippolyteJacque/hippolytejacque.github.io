@@ -146,10 +146,21 @@
 
 				on = function() {
 
-					var top, bottom, mode;
+					var top, bottom, mode, i = 1;
 
+					$this.css('background-image', 'url("' + $this.find('.image.main > img.slide'+i.toString()).attr('src') + '")');
 					// Use main <img>'s src as this spotlight's background.
-						$this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
+					window.setInterval(function(){
+						i++;
+						spotlightSlide();
+						if (i >= 3)
+							i = 1;
+					}, 5000);
+
+					function spotlightSlide(){
+						$this.css('background-image', 'url("' + $this.find('.image.main > img.slide'+i.toString()).attr('src') + '")');
+					}
+					// $this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
 
 					// Side-specific scrollex tweaks.
 						if ($this.hasClass('top')) {
