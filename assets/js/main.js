@@ -98,13 +98,13 @@
 							.css('background-position', 'center 0px');
 
 						$window
-							.on('scroll._parallax', function() {
+							// .on('scroll._parallax', function() {
 
-								var pos = parseInt($window.scrollTop()) - parseInt($this.position().top);
+							// 	var pos = parseInt($window.scrollTop()) - parseInt($this.position().top);
 
-								$this.css('background-position', 'center ' + (pos * -0.15) + 'px');
+							// 	$this.css('background-position', 'center ' + (pos * -0.15) + 'px');
 
-							});
+							// });
 
 					};
 
@@ -259,5 +259,37 @@
 
 		$banner
 			._parallax();
+
+	// scroll to section
+
+	var delay = false;
+	$(document).on('mousewheel DOMMouseScroll', function(event) {
+		event.preventDefault();
+		if(delay) return;
+
+		delay = true;
+		setTimeout(function(){delay = false},1000)
+
+		var wheelD = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+
+		var domSections = document.getElementsByTagName('section');
+		if(wheelD < 0) {
+			for(var i = 0 ; i < domSections.length ; i++) {
+				var t = domSections[i].getClientRects()[0].top;
+				if(t >= 40) break;
+			}
+		}
+		else {
+			for(var i = domSections.length - 1 ; i >= 0 ; i--) {
+				var t = domSections[i].getClientRects()[0].top;
+				if(t < -20) break;
+			}
+		}
+		if(i >= 0 && i < domSections.length) {
+			$('html,body').animate({
+				scrollTop: domSections[i].offsetTop
+			}, 1000);
+		}
+	});
 
 })(jQuery);
