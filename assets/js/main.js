@@ -260,9 +260,11 @@
 		$banner
 			._parallax();
 
-	// scroll to section
+	// scroll to sectionAnchor
 
 	var delay = false;
+	var anchors = document.getElementsByClassName('sectionAnchor');
+
 	$(document).on('mousewheel DOMMouseScroll', function(event) {
 		event.preventDefault();
 		if(delay) return;
@@ -272,22 +274,23 @@
 
 		var wheelD = event.originalEvent.wheelDelta || -event.originalEvent.detail;
 
-		var domSections = document.getElementsByTagName('section');
 		if(wheelD < 0) {
-			for(var i = 0 ; i < domSections.length ; i++) {
-				var t = domSections[i].getClientRects()[0].top;
+			// scroll down
+			for(var i = 0 ; i < anchors.length; i++) {
+				var t = anchors[i].getClientRects()[0].top;
 				if(t >= 40) break;
 			}
 		}
 		else {
-			for(var i = domSections.length - 1 ; i >= 0 ; i--) {
-				var t = domSections[i].getClientRects()[0].top;
+			// scroll up
+			for(var i = anchors.length - 1 ; i >= 0 ; i--) {
+				var t = anchors[i].getClientRects()[0].top;
 				if(t < -20) break;
 			}
 		}
-		if(i >= 0 && i < domSections.length) {
+		if(i >= 0 && i < anchors.length) {
 			$('html,body').animate({
-				scrollTop: domSections[i].offsetTop
+				scrollTop: anchors[i].offsetTop
 			}, 1000);
 		}
 	});
