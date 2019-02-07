@@ -1,0 +1,5 @@
+TO-DO:
+	- nav becomes black nav bar when scrolled down the home banner 
+
+THOUGHTS:
+	- moving spotlights background imgs with the spotlight description
