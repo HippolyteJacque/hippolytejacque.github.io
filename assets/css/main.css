@@ -3083,7 +3083,7 @@ input, select, textarea {
 
 		.spotlight.top .content, .spotlight.bottom .content {
 			left: 0;
-			padding: 2.1em 0 1.1em 0;
+			padding: 2.1em 0 3.1em 0;
 			width: 100%;
 		}
 
@@ -3372,7 +3372,7 @@ input, select, textarea {
 		}
 
 		#header nav {
-			position: absolute;
+			position: fixed;
 			right: 1em;
 			top: 0;
 		}
