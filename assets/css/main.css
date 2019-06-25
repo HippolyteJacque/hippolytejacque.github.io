@@ -2147,6 +2147,7 @@ input, select, textarea {
 
 	section.special, article.special {
 		text-align: center;
+		height: 100vh;
 	}
 
 	header p {
@@ -3418,9 +3419,8 @@ input, select, textarea {
 	}
 
 	body.landing #header {
-		background: transparent;
+		background: #1C1D26;
 		box-shadow: none;
-		position: absolute;
 	}
 
 /* Banner */
