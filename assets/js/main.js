@@ -25,6 +25,16 @@
 			}, 100);
 		});
 
+	//disable go to next section links for ipad and smaller resolutions
+	if (document.body.offsetWidth < 1025){
+			var gotonext = document.getElementsByClassName("goto-next");
+			for (var i = gotonext.length - 1; i >= 0; i--) {
+				console.log("hey");
+				gotonext[i].href= "#";
+				//gotonext[i].removeAttribute("href");
+			}
+		}
+
 	// Touch mode.
 		if (browser.mobile)
 			$body.addClass('is-touch');
@@ -46,7 +56,7 @@
 			$(
 				'<div id="titleBar">' +
 					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title"><p>Portfolio</p></span>' +
+					'<span class="title"><p>Hippolyte Jacque | Portfolio</p></span>' +
 				'</div>'
 			)
 				.appendTo($body);
@@ -71,10 +81,11 @@
 					visibleClass: 'navPanel-visible'
 				});
 
+
 	// Parallax.
 	// Disabled on IE (choppy scrolling) and mobile platforms (poor performance).
 		if (browser.name == 'ie'
-		||	browser.mobile) {
+		||	browser.mobile || document.body.offsetWidth < 1025) {
 
 			$.fn._parallax = function() {
 
